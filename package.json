@@ -4,9 +4,13 @@
   "description": "",
   "main": "web.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node web.js"
   },
-  "keywords": [],
+  "keywords": [
+    "example",
+    "heroku"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -14,5 +18,8 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "mongodb": "^3.2.7"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }

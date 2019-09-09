@@ -66,6 +66,8 @@ MarkList.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
     console.log("Connected to `" + DATABASE_NAME + "`! -- MarkList");
 });
 
+
+
 // post methods for creating
 app.post('/api/Student/createUser', (req, res) => {
     console.log("createUser Api called");
@@ -132,7 +134,7 @@ app.get('/api/Student/:Id', (req, res) => {
 });
 
 //get professor by Department ID
-app.get('/api/Professor/:DeptID', (req, res) => {
+app.get('/api/Professor/Dept/:DeptID', (req, res) => {
     professorCollection.find({ "deptId": req.params.DeptID }).toArray((error, result) => {
         if (error) {
             return res.status(500).send(error);
@@ -161,6 +163,15 @@ app.get('/api/Admin/:Id', (req, res) => {
     });
 });
 
+//get Marklist for a specific class
+app.get('/api/MarkList/:Id', (req, res) => {
+    adminCollection.find({ "classId": req.params.Id }).toArray( (error, result) => {
+        if (error) {
+            return res.status(500).send(error);
+        }
+        res.send(result);
+    });
+});
 
 //api for library
 app.post('/api/Library/createBook', (req, res) => {
@@ -464,6 +475,7 @@ app.listen(port, () => {
 // {
 //     "StudentId" : "1001",
 //     "StudentName" : "Student1",
+//     "ClassId"   : "A",
 //     "Subject1"  : 100,
 //     "Subject2"  : 100,
 //     "Subject3"  : 100,
