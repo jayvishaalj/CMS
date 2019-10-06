@@ -220,6 +220,15 @@ app.get('/api/Library/Book/Name/:Name', (req, res) => {
     });
 });
 
+app.get('/api/Library/Books',(req,res) =>{
+    libraryCollection.find({}).toArray((err,result) => {
+        if (err) {
+            return res.status(500).send(err);
+        }
+        res.send(result);
+    });
+});
+
 //borrow library book to student
 app.put('/api/Library/BorrowBook/:bookID/:studentID', (req, res) => {
     libraryCollection.findOne({ "bookId": req.params.bookID }, (error, re) => {
